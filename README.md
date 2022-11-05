@@ -1,4 +1,5 @@
 ![Code size](https://img.shields.io/github/languages/code-size/brotiger/rteam_test_1)
+![Files](https://img.shields.io/github/directory-file-count/brotiger/rteam_test_1)
 ![Top Language](https://img.shields.io/github/languages/top/brotiger/rteam_test_1)
 ![Last commit](https://img.shields.io/github/last-commit/brotiger/rteam_test_1)
 
