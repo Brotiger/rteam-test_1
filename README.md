@@ -23,6 +23,7 @@
 2. docker-compose up
 
 Результат:
+
 ![Пример результата](https://raw.githubusercontent.com/Brotiger/rteam_test_1/master/img/Screenshot%20from%202022-11-05%2022-17-17.png)
 
 #### Нативный запуск
@@ -31,4 +32,5 @@
 2. composer run-script test
 
 Результат:
+
 ![Пример результата](https://raw.githubusercontent.com/Brotiger/rteam_test_1/master/img/Screenshot%20from%202022-11-05%2022-02-52.png)
