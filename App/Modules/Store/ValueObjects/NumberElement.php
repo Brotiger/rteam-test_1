@@ -2,9 +2,7 @@
 
 namespace App\Modules\Store\ValueObjects;
 
-use App\Modules\Store\Contracts\ComponentInterface;
-
-class NumberElement implements ComponentInterface
+class NumberElement extends Component
 {
     public function getWeight(): int
     {

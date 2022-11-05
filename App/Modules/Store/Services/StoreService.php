@@ -7,19 +7,19 @@ use App\Modules\Store\ValueObjects\Composite;
 
 class StoreService implements StoreInterface
 {
-    private Composite $composite;
+    private Composite $store;
 
     public function __construct()
     {
-        $this->composite = new Composite; 
+        $this->store = new Composite; 
     }
 
     public function add($product) {
         $element = ElementFactory::create($product);
-        $this->composite->add($element);
+        $this->store->add($element);
     }
 
     public function getTotalWeight(): int{
-        return $this->composite->getWeight();
+        return $this->store->getWeight();
     }
 }
