@@ -7,12 +7,11 @@ use App\Modules\Store\Errors\StoreException;
 class Composite extends Component
 {
     protected $children = [];
-    private array $config;
+    private int $maxWeight = 1000;
 
     public function __construct()
     {
         $this->children = new \SplObjectStorage();
-        $this->config = include(ROOT . '/App/Configs/Store.php');
     }
 
     public function add(Component $component): void
@@ -20,12 +19,12 @@ class Composite extends Component
         $this->children->attach($component);
         $component->setParent($this);
 
-        if($this->getWeight() > $this->config['maxWeight']){
+        if($this->getWeight() > $this->maxWeight){
             $this->remove($component);
         }
     }
 
-    public function remove(Composite $component): void
+    public function remove(Component $component): void
     {
         $this->children->detach($component);
         $parent = $this->getParent();
@@ -34,7 +33,7 @@ class Composite extends Component
             $parent->remove($this);
         }
 
-        throw new StoreException("The maximum weight must not exceed " . $this->config['maxWeight']);
+        throw new StoreException("The maximum weight must not exceed " . $this->maxWeight);
     }
 
     public function getWeight(): int
