@@ -3,11 +3,11 @@
 namespace App\Modules\Store\ValueObjects;
 
 use App\Modules\Store\Errors\StoreException;
+use Configs\StoreConfig;
 
 class Composite extends Component
 {
     protected $children = [];
-    private int $maxWeight = 1000;
 
     public function __construct()
     {
@@ -19,7 +19,7 @@ class Composite extends Component
         $this->children->attach($component);
         $component->setParent($this);
 
-        if($this->getWeight() > $this->maxWeight){
+        if($this->getWeight() > StoreConfig::MAX_WHEIGHT){
             $this->remove($component);
         }
     }
@@ -33,7 +33,7 @@ class Composite extends Component
             $parent->remove($this);
         }
 
-        throw new StoreException("The maximum weight must not exceed " . $this->maxWeight);
+        throw new StoreException("The maximum weight must not exceed " . StoreConfig::MAX_WHEIGHT);
     }
 
     public function getWeight(): int
