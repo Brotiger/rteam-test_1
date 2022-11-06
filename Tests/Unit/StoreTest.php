@@ -2,6 +2,7 @@
 
 use App\Modules\Store\Errors\StoreException;
 use App\Modules\Store\Services\StoreService;
+use Configs\StoreConfig;
 use PHPUnit\Framework\TestCase;
 
 class StoreTest extends TestCase
@@ -30,11 +31,11 @@ class StoreTest extends TestCase
         $this->expectException(StoreException::class);
 
         try{
-            for($i = 0; $i < 1001; $i++){
+            for($i = 0; $i < StoreConfig::MAX_WHEIGHT + 1; $i++){
                 $storeService->add(true);
             }
         }finally{
-            $this->assertEquals($storeService->getTotalWeight(), 1000);
+            $this->assertEquals($storeService->getTotalWeight(), StoreConfig::MAX_WHEIGHT);
         }
         
     }
